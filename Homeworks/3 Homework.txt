@@ -1,106 +1,181 @@
-#include <iostream>
-using namespace std;
-int main() {
-	cout << "Egor" << endl;
-	return 0;
-}
-00000000000000000000000000000000000000000000000000000000
-#include <iostream>
-using namespace std;
-int main() {
-	float a, b;
-	cout << "Enter a" << endl;
-	cin >> a;
-	cout << "Enter b" << endl;
-	cin >> b;
-
-	cout << "Summ: " << a + b << endl;
-	cout << "Diffence: " << a - b << endl;
-	cout << "Composition: " << a * b << endl;
-	if (b != 0) {
-		cout << "Division: " << a / b;
-	}
-
-	else {
-		cout << "Error";
-	}
-	return 0;
-}
-00000000000000000000000000000000000000000000000000000000
-#include <iostream>
-using namespace std;
-int main() {
-
-	float b, c;
-	cout << "Enter b" << endl;
-	cin >> b;
-	cout << "Enter c" << endl;
-	cin >> c;
-
-	if (b == 0) {
-		cout << "No answer";
-	}
-	
-	else {
-		cout << "Answer: " << (-c) / b;
-	}
-
-	return 0;
-}
-00000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000
 #include <iostream>
 #include <cmath>
 using namespace std;
+
 int main() {
+	float S, p, n, r, m, k, l;
+	cout << "Enter S" << endl;
+	cin >> S;
+	cout << "Enter p" << endl;
+	cin >> p;
+	cout << "Enter n" << endl;
+	cin >> n;
 
-	float a, b, c, D, answer;
-	cout << "Enter a" << endl;
-	cin >> a;
-	cout << "Enter b" << endl;
-	cin >> b;
-	cout << "Enter c" << endl;
-	cin >> c;
+	r = p / 100;
+	l = 1 + r;
+	k = pow(l, n);
 
-	if (2 * a == 0) {
-		cout << "No answer";
+	if (r > 0 && S > 0 && p > 0 && n > 0) {
+		m = (S * r * k) / (12 * (k - 1));
+		cout << "Answer is " << m << endl;
 	}
-	else{
-	D = (b * b) - (4 * a * c);
-	if (D == 0) {
-		answer = (-b) / (2 * a);
-		cout << "x = " << answer << endl;
-	}
-	else if (D > 0) {
-		answer = ((-b) + sqrt(D)) / (2 * a);
-		cout << "x1 = " << answer << endl;
-		answer = ((-b) - sqrt(D)) / (2 * a);
-		cout << "x2 = " << answer << endl;
-	}
+
 	else {
-		cout << "No answer";
+		cout << "No answer" << endl;
 	}
-}
+
 	return 0;
 }
-00000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000
+#include <iostream>
+#include <cmath>
+using namespace  std;
+
+int main(int argc, char* argv[]) {
+    float S, m;
+    int n;
+
+    cout << "Enter S, m,  n: " << endl;
+    cin >> S >> m >> n;
+
+    if (S <= 0 || m <= 0) {
+        cout << "error" << endl;
+        return 1;
+    }
+
+    if (n < 0) {
+        cout << "error" << endl;
+        return 1;
+    }
+
+    float r = 0;
+    float step = 100;
+    float prev_r = 0;
+
+    if (m * 12 * n < S) {
+        cout << "error" << endl;
+        return 1;
+    }
+
+    while (step != 0.00001) {
+        float current_m = (S * r * pow(1 + r, n)) / (12 * (pow(1 + r, n) - 1));
+        if (current_m < m) {
+            prev_r = r;
+            r += step;
+        }
+        else if ((abs(m - current_m)) < 0.1) {
+            cout << "p:  " << r * 100 << endl;
+            return 0;
+        }
+        else {
+            step /= 10;
+            r = prev_r + step;
+        }
+    }
+    cout << "error" << endl;
+}
+0000000000000000000000000000000000000000000000000
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+int main() {
+	string T, a;
+	ofstream fout("text.txt");
+	if (fout.is_open()) {
+		cout << "Input text" << endl;
+		getline(cin, T);
+		fout << T;
+		fout.close();
+		ifstream loat("text.txt");
+		if (loat.is_open()){
+			while (!loat.eof()) {
+				loat >> a ;
+				cout << a << " " ;
+			}
+			loat.close();
+		}
+		else {
+			cout << "File no open" << endl;
+		}
+	}
+	else {
+		cout << "File no open" << endl;
+	}
+	return 0;
+}
+0000000000000000000000000000000000000000000000000
 #include <iostream>
 #include <string>
+#include <fstream>
+
 using namespace std;
+
 int main() {
-
-	string a,b,c;
-	cout << "Day? Enter: y or n" << endl;
-	cin >> a;
-	cout << "The Lamp is glowing? Enter: y or n" << endl;
-	cin >> b;
-	cout << "The curtains are open? Enter: y or n" << endl;
-	cin >> c;
-
-	if (a == "y" && c == "y" || b == "y") {
-		cout << "Light";
+	string Text, a, str1;
+	ofstream create("egorka.txt");
+	if (create.is_open()) {
+		cout << "Input Text:" << endl;
+		getline(cin, Text);
+		create << Text;
+		create.close();
+		ifstream in("egorka.txt");
+		if (in.is_open()) {
+			while (getline(in, a)) {
+				for (int i = 0; i <= a.size(); i++) {
+					if ('0' > a[i] || a[i] > '9') {
+						if (str1 != "") {
+							cout << str1 << " ";
+							str1 = "";
+						}
+					}
+					else {
+						str1 += a[i];
+					}
+				}
+			}
+			in.close();
+		}
+		else {
+			cout << "File no open" << endl;
+		}
 	}
-	else {
-		cout << "Dark";
-	}
+
 	return 0;
+
+}
+0000000000000000000000000000000000000000000000000
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	string Text, a, str1;
+	ofstream create("egor.txt");
+	if (create.is_open()) {
+		cout << "Input Text:" << endl;
+		getline(cin, Text);
+		create << Text;
+		create.close();
+		ifstream in("egor.txt");
+		if (in.is_open()) {
+			while (getline(in, a)) {
+				sort(a.begin(), a.end());
+				cout << a;
+			}
+			in.close();
+		}
+		else {
+			cout << "File no open" << endl;
+		}
+	}
+
+	return 0;
+
 }
