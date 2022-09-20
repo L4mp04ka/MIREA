@@ -1,0 +1,106 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main() {
+
+	float R, r, h, V, L, S;
+	cout << "Enter Radius: " << endl;
+	cin >> R;
+	cout << "Enter r: " << endl;
+	cin >> r;
+	cout << "Enter height: " << endl;
+	cin >> h;
+	if (R == 0 || r == 0 || h == 0 || R < r) {
+		cout << "No answer";
+	}
+	else{
+		if (((R - r) * (R - r) + h * h) < 0) {
+			cout << "No answer";
+		}
+		else {
+			V = (1.0 / 3.0 * 3.14 * h) * (R * R + R * r + r * r);
+			cout << "V = " << V << endl;
+			L = sqrt((R - r) * (R - r) + h * h);
+			cout << "L = " << L << endl;
+			S = 3.14 * (R * R + (R + r) * L + r * r);
+			cout << "S = " << S << endl;
+			return 0;
+		}
+	}
+}
+00000000000000000000000000000000000000000000000000000000
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+	float x, a, w;
+	cout << "Enter a:" << endl;
+	cin >> a;
+	cout << "Enter x:" << endl;
+	cin >> x;
+	if(abs(x)<1){
+		w = a * log(abs(x));
+		cout << "W = " << w << endl;
+	}
+	else if(abs(x)>=1 and (a - x * x)>=0){
+		w = sqrt(a - x * x);
+		cout << "W = " << w << endl;
+	}
+	else {
+		cout << "No answer";
+	}
+}
+00000000000000000000000000000000000000000000000000000000
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+	float x, y, b, ans;
+	cout << "Enter x" << endl;
+	cin >> x;
+	cout << "Enter y" << endl;
+	cin >> y;
+	cout << " Enter b" << endl;
+	cin >> b;
+
+	if (((b - x) < 0) || (b-y)<=0) {
+		cout << "No answer";
+	}
+	else {
+		ans = log(b - y) * sqrt(b - x);
+		cout << "Answer is " << ans;
+	}
+
+}
+00000000000000000000000000000000000000000000000000000000
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+	int a,k;
+	cout << "Enter a" << endl;
+	cin >> a;
+	k = a + 10;
+	while (a < k) {
+		a++;
+		cout << a << ",";
+	}
+	return 0;
+}
+00000000000000000000000000000000000000000000000000000000
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+	float y, x;
+	cout << "Enter x" << endl;
+	for (x = -4; x < 5; x++) {
+		y = ((x * x) - (2 * x) + 2) / (x - 1);
+		cout << "y = " << y << endl;
+	}
+	return 0;
+}
