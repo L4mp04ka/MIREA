@@ -149,33 +149,26 @@ int main() {
 }
 0000000000000000000000000000000000000000000000000
 #include <iostream>
-#include <string>
-#include <fstream>
-#include <algorithm>
 
 using namespace std;
 
 int main() {
-	string Text, a, str1;
-	ofstream create("egor.txt");
-	if (create.is_open()) {
-		cout << "Input Text:" << endl;
-		getline(cin, Text);
-		create << Text;
-		create.close();
-		ifstream in("egor.txt");
-		if (in.is_open()) {
-			while (getline(in, a)) {
-				sort(a.begin(), a.end());
-				cout << a;
+	string digitals[30];
+	int i, j;
+	cout << "Enter 30 letters" << endl;
+	for (i = 0; i < 30; i++) {
+		cin >> digitals[i];
+	}
+	for (i = 0; i < 30; i++) {
+		for (j = 0; j < 29; j++) {
+			if (digitals[j] > digitals[j + 1]) {
+				swap(digitals[j], digitals[j + 1]);
 			}
-			in.close();
-		}
-		else {
-			cout << "File no open" << endl;
 		}
 	}
-
+	for (i = 0; i < 30; i++) {
+		cout << digitals[i] << " ";
+	}
+	system("pause");
 	return 0;
-
 }
