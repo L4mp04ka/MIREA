@@ -1,0 +1,106 @@
+#include <iostream>
+using namespace std;
+int main() {
+	cout << "Egor" << endl;
+	return 0;
+}
+00000000000000000000000000000000000000000000000000000000
+#include <iostream>
+using namespace std;
+int main() {
+	float a, b;
+	cout << "Enter a" << endl;
+	cin >> a;
+	cout << "Enter b" << endl;
+	cin >> b;
+
+	cout << "Summ: " << a + b << endl;
+	cout << "Diffence: " << a - b << endl;
+	cout << "Composition: " << a * b << endl;
+	if (b != 0) {
+		cout << "Division: " << a / b;
+	}
+
+	else {
+		cout << "Error";
+	}
+	return 0;
+}
+00000000000000000000000000000000000000000000000000000000
+#include <iostream>
+using namespace std;
+int main() {
+
+	float b, c;
+	cout << "Enter b" << endl;
+	cin >> b;
+	cout << "Enter c" << endl;
+	cin >> c;
+
+	if (b == 0) {
+		cout << "No answer";
+	}
+	
+	else {
+		cout << "Answer: " << (-c) / b;
+	}
+
+	return 0;
+}
+00000000000000000000000000000000000000000000000000000000
+#include <iostream>
+#include <cmath>
+using namespace std;
+int main() {
+
+	float a, b, c, D, answer;
+	cout << "Enter a" << endl;
+	cin >> a;
+	cout << "Enter b" << endl;
+	cin >> b;
+	cout << "Enter c" << endl;
+	cin >> c;
+
+	if (2 * a == 0) {
+		cout << "No answer";
+	}
+	else{
+	D = (b * b) - (4 * a * c);
+	if (D == 0) {
+		answer = (-b) / (2 * a);
+		cout << "x = " << answer << endl;
+	}
+	else if (D > 0) {
+		answer = ((-b) + sqrt(D)) / (2 * a);
+		cout << "x1 = " << answer << endl;
+		answer = ((-b) - sqrt(D)) / (2 * a);
+		cout << "x2 = " << answer << endl;
+	}
+	else {
+		cout << "No answer";
+	}
+}
+	return 0;
+}
+00000000000000000000000000000000000000000000000000000000
+#include <iostream>
+#include <string>
+using namespace std;
+int main() {
+
+	string a,b,c;
+	cout << "Day? Enter: y or n" << endl;
+	cin >> a;
+	cout << "The Lamp is glowing? Enter: y or n" << endl;
+	cin >> b;
+	cout << "The curtains are open? Enter: y or n" << endl;
+	cin >> c;
+
+	if (a == "y" && c == "y" || b == "y") {
+		cout << "Light";
+	}
+	else {
+		cout << "Dark";
+	}
+	return 0;
+}
