@@ -109,43 +109,41 @@ int main() {
 }
 0000000000000000000000000000000000000000000000000
 #include <iostream>
-#include <string>
 #include <fstream>
+#include <string>
 
 using namespace std;
 
 int main() {
-	string Text, a, str1;
-	ofstream create("egorka.txt");
-	if (create.is_open()) {
-		cout << "Input Text:" << endl;
+	int i;
+	string Text, y;
+	ofstream file("text.txt");
+	if (file.is_open()) {
+		cout << "Enter letters" << endl;
 		getline(cin, Text);
-		create << Text;
-		create.close();
-		ifstream in("egorka.txt");
-		if (in.is_open()) {
-			while (getline(in, a)) {
-				for (int i = 0; i <= a.size(); i++) {
-					if ('0' > a[i] || a[i] > '9') {
-						if (str1 != "") {
-							cout << str1 << " ";
-							str1 = "";
-						}
-					}
-					else {
-						str1 += a[i];
-					}
+		file << Text;
+		file.close();
+		ifstream filesec("text.txt");
+		if (filesec.is_open()) {
+			getline(filesec, y);
+			filesec.close();
+			for (i = 0; i < y.size(); i++){
+				if (y[i] < '0' || y[i] > '9') {
+					cout << y[i];
+				}
+				else {
+					cout << "";
 				}
 			}
-			in.close();
 		}
 		else {
 			cout << "File no open" << endl;
 		}
 	}
-
+	else {
+		cout << "File no open" << endl;
+	}
 	return 0;
-
 }
 0000000000000000000000000000000000000000000000000
 #include <iostream>
