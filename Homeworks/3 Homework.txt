@@ -84,19 +84,19 @@ using namespace std;
 
 int main() {
 	string T, a;
-	ofstream fout("text.txt");
-	if (fout.is_open()) {
+	ofstream file("text.txt");
+	if (file.is_open()) {
 		cout << "Input text" << endl;
 		getline(cin, T);
-		fout << T;
-		fout.close();
-		ifstream loat("text.txt");
-		if (loat.is_open()){
-			while (!loat.eof()) {
-				loat >> a ;
+		file << T;
+		file.close();
+		ifstream filesec("text.txt");
+		if (filesec.is_open()){
+			while (!filesec.eof()) {
+				filesec >> a ;
 				cout << a << " " ;
 			}
-			loat.close();
+			filesec.close();
 		}
 		else {
 			cout << "File no open" << endl;
