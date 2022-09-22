@@ -7,7 +7,7 @@ using namespace std;
 
 int main() {
 	float c = 0.0;
-	int i;
+	int i, kostil = 48;
 	string Text, y;
 	ofstream file("text.txt");
 	if (file.is_open()) {
@@ -21,16 +21,11 @@ int main() {
 		getline(filesec, y);
 		for (i = 0; i < y.size(); i++) {
 			if (y[i] >= '0' && y[i] <= '9') {
-				int k = (y[i]);
-				c = c + k;
-				cout << y[i] << endl;
-				cout << c;
-			}
-			else {
-				cout << "YOU ENTERED A LETTER" << endl;
+				c = c + (y[i]) - kostil;
 			}
 		}
 	}
+	cout << c << endl;
 
 	return 0;
 }
