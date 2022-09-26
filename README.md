@@ -1,2 +1,2 @@
-# MIREA
-I love Mirea
+# 🍓MIREA🍓
+💘I love Mirea💘
