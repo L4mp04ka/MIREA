@@ -1,32 +1,101 @@
 0000000000000000000000000000000000000000000000000(1)
 #include <iostream>
 #include <fstream>
-#include <string>
 
 using namespace std;
 
-int main() {
-	float c = 0.0;
-	int i, kostil = 48;
-	string Text, y;
-	ofstream file("text.txt");
-	if (file.is_open()) {
-		cout << "Enter letters" << endl;
-		getline(cin, Text);
-		file << Text;
-		file.close();
-	}
-	ifstream filesec("text.txt");
-	if (filesec.is_open()) {
-		getline(filesec, y);
-		for (i = 0; i < y.size(); i++) {
-			if (y[i] >= '0' && y[i] <= '9') {
-				c = c + (y[i]) - kostil;
-			}
-		}
-	}
-	cout << c << endl;
+int main()
+{
+	double num;
 
+	ofstream File("new.txt");
+	cout << "Enter numbers" << endl;	
+	for (int i = 0; i < 10; i++) 
+	{
+		cin >> num;
+		File << num << endl;
+	}
+	File.close();
+
+	ifstream Fil("new.txt");
+	if (Fil.is_open())
+	{
+		double x, sum = 0.0;
+		while (Fil >> x) 
+		{
+			sum += x;
+		}
+		cout << sum;
+	}
+	File.close();
 	return 0;
+}
+0000000000000000000000000000000000000000000000000(2)
+#include <iostream>
+
+using namespace std;
+
+int Chet(double x) {
+	if (x > 0) return 1;
+	if (x == 0) return 0;
+	if (x < 0) return -1;
+}
+
+int main() {
+	double x;
+	cin >> x;
+	int answer = Chet(x);
+	if (answer == 1) cout << "+";
+	if (answer == 0) cout << "+";
+	if (answer == -1) cout << "-";
+}
+0000000000000000000000000000000000000000000000000(3)
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int Plochad(double a, double b)
+{
+	return a * b;
+}
+
+int Plochad(double a, double b, double h)
+{
+	return (a * b * h)/2; 
+}
+
+int Plochad(double r)
+{
+	return 3.14 * (r * r);
+}
+
+
+
+int main()
+{
+	int i = 0;
+	double a, b, h, r;
+	if (i == 0) {
+		cout << "Enter a and b (S = a * b)" << endl;
+		cin >> a >> b;
+		float Pram = Plochad(a, b);
+		i += 1;
+		cout << Pram << " rectangle" << endl;
+	}
+
+	if (i == 1) {
+		cout << "Enter a, b, h (S = (a * b * h)/2)" << endl;
+		cin >> a >> b >> h;
+		float Treug = Plochad(a, b, h);
+		i += 1;
+		cout << Treug << " triangle" << endl;
+	}
+	if (i == 2) {
+		cout << "Enter r (S = Pi * r^2)" << endl;
+		cin >> r;
+		float Krug = Plochad(r);
+		i += 1;
+		cout << Krug << " circle" << endl;
+	}
 }
 0000000000000000000000000000000000000000000000000
