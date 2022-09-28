@@ -1,4 +1,3 @@
-00000000000000000000000000000000000000000000000000000000(1)
 #include <iostream>
 #include <cmath>
 using namespace std;
@@ -29,7 +28,7 @@ int main() {
 		}
 	}
 }
-00000000000000000000000000000000000000000000000000000000(2)
+00000000000000000000000000000000000000000000000000000000
 #include <iostream>
 #include <cmath>
 using namespace std;
@@ -40,11 +39,11 @@ int main() {
 	cin >> a;
 	cout << "Enter x:" << endl;
 	cin >> x;
-	if(abs(x)<1){
+	if (abs(x) < 1 && x!=0) {
 		w = a * log(abs(x));
 		cout << "W = " << w << endl;
 	}
-	else if(abs(x)>=1 and (a - x * x)>=0){
+	else if (abs(x) >= 1 and (a - x * x) >= 0) {
 		w = sqrt(a - x * x);
 		cout << "W = " << w << endl;
 	}
@@ -52,7 +51,7 @@ int main() {
 		cout << "No answer";
 	}
 }
-00000000000000000000000000000000000000000000000000000000(3)
+00000000000000000000000000000000000000000000000000000000
 #include <iostream>
 #include <cmath>
 using namespace std;
@@ -75,23 +74,30 @@ int main() {
 	}
 
 }
-00000000000000000000000000000000000000000000000000000000(4)
+00000000000000000000000000000000000000000000000000000000
 #include <iostream>
 #include <cmath>
 using namespace std;
 
 int main() {
-	int a,k;
+	int a, k;
 	cout << "Enter a" << endl;
 	cin >> a;
 	k = a + 10;
+
 	while (a < k) {
-		a++;
-		cout << a << ",";
+		if (a < 0 || a == 0) {
+			cout << "";
+			a++;
+		}
+		else {
+			cout << a << ",";
+			a++;
+		}
 	}
 	return 0;
 }
-00000000000000000000000000000000000000000000000000000000(5)
+00000000000000000000000000000000000000000000000000000000
 #include <iostream>
 #include <cmath>
 using namespace std;
@@ -99,9 +105,14 @@ using namespace std;
 int main() {
 	float y, x;
 	cout << "Enter x" << endl;
-	for (x = -4; x < 5; x++) {
-		y = ((x * x) - (2 * x) + 2) / (x - 1);
-		cout << "y = " << y << endl;
-	}
+		for (x = -4; x <= 4; x = x + 0.5) {
+			if (x == 1) {
+				cout << "No answer" << endl;
+			}
+			else {
+				y = ((x * x) - (2 * x) + 2) / (x - 1);
+				cout << "y = " << y << endl;
+			}
+		}
 	return 0;
 }

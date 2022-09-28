@@ -127,12 +127,16 @@ int main() {
 		if (filesec.is_open()) {
 			getline(filesec, y);
 			filesec.close();
-			for (i = 0; i < y.size(); i++){
-				if (y[i] < '0' || y[i] > '9') {
-					cout << y[i];
-				}
-				else {
-					cout << "";
+			for (i = 0; i < y.size()-1; i++) {
+				if (y[i] >= '0' && y[i] <= '9') 
+				{
+					if (y[i+1] < '0' || y[i+1] > '9') 
+					{
+						cout << y[i] << " ";
+					}
+					else {
+						cout << y[i];
+					}
 				}
 			}
 		}
@@ -147,24 +151,33 @@ int main() {
 }
 0000000000000000000000000000000000000000000000000(5)
 #include <iostream>
-
+#include <string>
 using namespace std;
 
 int main() {
+	string digit;
 	string digitals[30];
-	int i, j;
 	cout << "Enter 30 letters" << endl;
-	for (i = 0; i < 30; i++) {
-		cin >> digitals[i];
+	cin >> digit;
+	for (int i = 0; i < 30; i++) {
+		if (digit.size() < 30)
+		{
+			cout << "Too small string" << endl;
+			system("pause");
+		}
+		else 
+		{
+			digitals[i] = digit[i];
+		}
 	}
-	for (i = 0; i < 30; i++) {
-		for (j = 0; j < 29; j++) {
+	for (int i = 0; i < 30; i++) {
+		for (int j = 0; j < 29; j++) {
 			if (digitals[j] > digitals[j + 1]) {
 				swap(digitals[j], digitals[j + 1]);
 			}
 		}
 	}
-	for (i = 0; i < 30; i++) {
+	for (int i = 0; i < 30; i++) {
 		cout << digitals[i] << " ";
 	}
 	system("pause");
