@@ -178,4 +178,261 @@ int main() {
 	}
 	return 0;
 }
-0000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000(7)
+
+#include <iostream>
+
+#include <cmath>
+
+using namespace std;
+
+int main() {
+
+int m, b, c, s = 0, k;
+
+cout << "Enter m" << endl;
+
+cin >> m;
+
+cout << "Enter b" << endl;
+
+cin >> b;
+
+cout << "Enter c" << endl;
+
+cin >> c;
+
+cout << "Generator: " << endl;
+
+for (int i = 0; i < 10; i++) {
+
+s = abs((m * s) + b) % c;
+
+cout << s << endl;
+
+}
+
+return 0;
+
+}
+
+0000000000000000000000000000000000000000000000000(8)
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+	float k1 = 0, k2 = 0, k3 = 0;
+
+	float c1 = 0, c2 = 0, c3 = 0;
+
+	// товар
+
+	float x[3][4], s;
+
+	cout << "Enter matrix 3/4" << endl;
+
+	for (int i = 0; i < 3; i++) {
+
+		for (int j = 0; j < 4; j++) {
+
+			cin >> s;
+
+			x[i][j] = s;
+
+		}
+
+	}
+
+	for (int i = 0; i < 3; i++) {
+
+		cout << endl;
+
+		for (int j = 0; j < 4; j++) {
+
+			cout << x[i][j] << " ";
+
+		}
+
+	}
+
+	cout << endl;
+
+	// комиссионные
+
+	float v[4][2];
+
+	cout << "Enter matrix 4/2" << endl;
+
+	for (int i = 0; i < 4; i++) {
+
+		for (int j = 0; j < 2; j++) {
+
+			cin >> s;
+
+			v[i][j] = s;
+
+		}
+
+	}
+
+	for (int i = 0; i < 4; i++) {
+
+		cout << endl;
+
+		for (int j = 0; j < 2; j++) {
+
+			cout << v[i][j] << " ";
+
+		}
+
+	}
+
+	cout << endl;
+
+	// самый богатый продавец
+
+	for (int j = 0; j < 4; j++) {
+
+		c1 += v[j][0] * x[0][j];
+
+		c2 += v[j][0] * x[1][j];
+
+		c3 += v[j][0] * x[2][j];
+
+		k1 += v[j][1] * x[0][j];
+
+		k2 += v[j][1] * x[1][j];
+
+		k3 += v[j][1] * x[2][j];
+
+	}
+
+	// матрица C
+
+	float z[3][2];
+
+	z[0][0] = c1;
+
+	z[0][1] = k1;
+
+	z[1][0] = c2;
+
+	z[1][1] = k2;
+
+	z[2][0] = c3;
+
+	z[2][1] = k3;
+
+	for (int i = 0; i < 3; i++) {
+
+		cout << endl;
+
+		for (int j = 0; j < 2; j++) {
+
+			cout << z[i][j] << " ";
+
+		}
+
+	}
+
+	cout << endl;
+
+// Деньги max/min
+
+	int number;
+
+	float max = z[0][0];
+
+	for (int i = 0; i < 3; i++) {
+
+		if (max < z[i][0]) {
+
+			number = i;
+
+		}
+
+	}
+
+	int numberMin = 0;
+
+	float sumin = z[0][0];
+
+	for (int i = 0; i < 3; i++) {
+
+		if (sumin > z[i][0]) {
+			numberMin = i + 1;
+			sumin = z[i][0];
+		}
+		else {
+			numberMin = 1;
+		}
+	}
+
+// комиссионные max/min
+
+	int numberK;
+
+	float komis = z[0][1];
+
+	for (int i = 0; i < 3; i++) {
+
+		if (komis < z[i][1]) {
+
+			numberK = i;
+
+		}
+
+		else {
+
+			numberK = 1;
+
+		}
+
+	}
+
+	int numbeK;
+
+	float komisK = z[0][1];
+
+	for (int i = 0; i < 3; i++) {
+
+		if (komisK > z[i][1]) {
+			komisK = z[i][1];
+			numbeK = i;
+
+		}
+
+		else {
+
+			numbeK = 1;
+
+		}
+
+	}
+	
+	float Summ = c1 + c2 + c3;
+
+	float Komis = k1 + k2 + k3;
+
+	cout << "Prodavec maxsumm / minsumm: " << number << "/" << numberMin << endl;
+
+	cout << "Prodavec maxkomis / mincomis: " << numberK << "/" << numbeK << endl;
+
+	cout << "Dengi: " << Summ << endl;
+
+	cout << "Vecb oborot: " << Komis + Summ << endl;
+
+	return 0;
+
+}
+5 2 0 0
+3 5 2 5
+20 0 0 0
+
+1.2 0.5
+2.8 0.4
+5.0 1.0
+2.0 1.5
