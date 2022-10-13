@@ -428,6 +428,61 @@ int main() {
 	return 0;
 
 }
+0000000000000000000000000000000000000000000000000(9)
+#include <iostream>
+
+#include <string>
+
+#include <cmath>
+
+using namespace std;
+
+int main() {
+
+int A = 0, B, C, S = 0, k = 0, f = 0;
+
+cout << "old base" << endl;
+
+cin >> A;
+
+cout << "new base" << endl;
+
+cin >> B;
+
+cout << "enter number" << endl;
+
+cin >> C;
+
+string y = to_string(C);
+
+for (int i = 0; i < y.length(); i++) {
+
+f = f + 1;
+
+k = (y[i]-48) * pow(A, y.length() - f);
+
+S = S + k;
+
+}
+cout << S << endl;
+
+string m = to_string(S);
+
+
+while ((S / B) != 1)
+{
+    int l =(S % B);
+    S = S / B;
+    cout << l << " " << S << " " << S/B << endl;
+}
+
+int l =(S % B);
+    S = S / B;
+    cout << l << " " << S << " " << S/B << endl;
+
+return 0;
+}
+
 5 2 0 0
 3 5 2 5
 20 0 0 0
