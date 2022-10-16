@@ -435,11 +435,14 @@ int main() {
 
 #include <cmath>
 
+#include <algorithm>
+
 using namespace std;
 
 int main() {
 
-int A = 0, B, C, S = 0, k = 0, f = 0;
+int A = 0, B, C, S = 0, k = 0, f = 0, v = 0;
+string kiskis;
 
 cout << "old base" << endl;
 
@@ -464,24 +467,29 @@ k = (y[i]-48) * pow(A, y.length() - f);
 S = S + k;
 
 }
-cout << S << endl;
 
 string m = to_string(S);
 
-
-while ((S / B) != 1)
+if (S < B)
 {
-    int l =(S % B);
-    S = S / B;
-    cout << l << " " << S << " " << S/B << endl;
+    cout <<"Answer: "<< S;
 }
-
-int l =(S % B);
-    S = S / B;
-    cout << l << " " << S << " " << S/B << endl;
-
+else
+{
+while ((v / B) != 1)
+{
+    int L = S%B;
+    v = S;
+    S = S/B;
+    kiskis += std::to_string(L);
+}
+}
+kiskis += std::to_string(1);
+std::reverse(kiskis.begin(), kiskis.end());
+cout << "Answer: " << kiskis;
 return 0;
 }
+
 
 5 2 0 0
 3 5 2 5
