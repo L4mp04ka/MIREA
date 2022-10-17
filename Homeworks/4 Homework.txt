@@ -140,43 +140,47 @@ int main()
 }
 0000000000000000000000000000000000000000000000000(6)
 #include <iostream>
-
+#include <string>
 using namespace std;
-
-int main() {
-	char bukva[1000];
-
-	cin.getline(bukva, 100);
-
-	for (int i = 0; i < strlen(bukva); i++) 
-	{
-		switch (bukva[i]) 
-		{
-		case 'I':
-			cout << "1";
-			break;
-		case 'V':
-			cout << "5";
-			break;
-		case 'X':
-			cout << "10";
-			break;
-		case 'L':
-			cout << "50";
-			break;
-		case 'C':
-			cout << "100";
-			break;
-		case 'D':
-			cout << "500";
-			break;
-		case 'M':
-			cout << "1000";
-			break;
-
-		}
-	}
-	return 0;
+ 
+int convert(char x)
+{
+    switch (x)
+    {
+    case 'I':
+        return 1;
+    case 'V':
+        return 5;
+    case 'X':
+        return 10;
+    case 'L':
+        return 50;
+    case 'C':
+        return 100;
+    case 'D':
+        return 500;
+    case 'M':
+        return 1000;
+    }
+    return 0;
+}
+ 
+int main()
+{
+    string s;
+    cin >> s;
+    int x = 0, c1 = 0;
+    for (int i = s.length() - 1; i >= 0; i--)
+    {
+        int c = convert(s[i]);
+        if (c >= c1)
+            c1 = c;
+        if (c == c1)
+            x += c;
+        else
+            x -= c;
+    }
+    cout << x;
 }
 0000000000000000000000000000000000000000000000000(7)
 
