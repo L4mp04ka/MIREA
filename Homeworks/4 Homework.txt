@@ -59,9 +59,10 @@ int Plochad(double a, double b)
 	return a * b;
 }
 
-int Plochad(double a, double b, double h)
+int Plochad(double a, double b, double c, double p)
 {
-	return (a * b * h)/2; 
+    p = (a + b + c)/2;
+	return (sqrt(p * (p - a) * (p - b) * (p - c))); 
 }
 
 int Plochad(double r)
@@ -73,30 +74,33 @@ int Plochad(double r)
 
 int main()
 {
-	int i = 0;
-	double a, b, h, r;
+	int i;
+	cout << "0 - pryamoygolnik, 1 - treygolnik, 2 - krug" << endl;
+	cin >> i;
+	double a, b, c, r, p;
 	if (i == 0) {
 		cout << "Enter a and b (S = a * b)" << endl;
 		cin >> a >> b;
 		float Pram = Plochad(a, b);
-		i += 1;
+
 		cout << Pram << " rectangle" << endl;
 	}
 
 	if (i == 1) {
-		cout << "Enter a, b, h (S = (a * b * h)/2)" << endl;
-		cin >> a >> b >> h;
-		float Treug = Plochad(a, b, h);
-		i += 1;
+		cout << "Enter a, b, c (S = (sqrt(p * (p - a) * (p - b) * (p - c)))" << endl;
+		cin >> a >> b >> c;
+		float Treug = Plochad(a, b, c, p);
 		cout << Treug << " triangle" << endl;
 	}
+	
 	if (i == 2) {
 		cout << "Enter r (S = Pi * r^2)" << endl;
 		cin >> r;
 		float Krug = Plochad(r);
-		i += 1;
+
 		cout << Krug << " circle" << endl;
 	}
+	return 0;
 }
 0000000000000000000000000000000000000000000000000(4)
 #include <iostream>
@@ -434,64 +438,138 @@ int main() {
 }
 0000000000000000000000000000000000000000000000000(9)
 #include <iostream>
-
 #include <string>
-
 #include <cmath>
-
 #include <algorithm>
 
 using namespace std;
-
+int chisla(char x) {
+    switch (x) {
+        case '0':
+            return 0;
+        case '1':
+            return 1;
+        case '2':
+            return 2;
+        case '3':
+            return 3;
+        case '4':
+            return 4;
+        case '5':
+            return 5;
+        case '6':
+            return 6;
+        case '7':
+            return 7;
+        case '8':
+            return 8;
+        case '9':
+            return 9;
+        case 'A':
+            return 10;
+        case 'B':
+            return 11;
+        case 'C':
+            return 12;
+        case 'D':
+            return 13;
+        case 'E':
+            return 14;
+        case 'F':
+            return 15;  
+    }
+    return 0;
+}
+int chislo(int r) {
+    switch (r) {
+    case 0:
+        return '0';
+    case 1:
+        return '1';
+    case 2:
+        return '2';
+    case 3:
+        return '3';
+    case 4:
+        return '4';
+    case 5:
+        return '5';
+    case 6:
+        return '6';
+    case 7:
+        return '7';
+    case 8:
+        return '8';
+    case 9:
+        return '9';
+    case 10:
+        return 'A';
+    case 11:
+        return 'B';
+    case 12:
+        return 'C';
+    case 13:
+        return 'D';
+    case 14:
+        return 'E';
+    case 15:
+        return 'F';
+    }
+    return 0;
+}
 int main() {
 
-int A = 0, B, C, S = 0, k = 0, f = 0, v = 0;
-string kiskis;
+    int A = 0, B, C, S = 0, k = 0, f = 0, v = 0, j = 0, last = 999;
+    string kiskis;
+    string y;
+    string m;
+    cout << "old base" << endl;
 
-cout << "old base" << endl;
+    cin >> A;
 
-cin >> A;
+    cout << "new base" << endl;
 
-cout << "new base" << endl;
+    cin >> B;
 
-cin >> B;
+    cout << "enter number" << endl;
 
-cout << "enter number" << endl;
+    cin >> y;
+    
+    if (A == 0 || B == 0){
+        cout << "Noooo Answer, You Bad" << endl;
+    }
+    else{
+        for (int i = 0; i < y.length(); i++) {
+            int z = chisla(y[i]);
+            f = f + 1;
+            k = (z) * pow(A, y.length() - f);
+            S = S + k;
+        }
 
-cin >> C;
-
-string y = to_string(C);
-
-for (int i = 0; i < y.length(); i++) {
-
-f = f + 1;
-
-k = (y[i]-48) * pow(A, y.length() - f);
-
-S = S + k;
-
-}
-
-string m = to_string(S);
-
-if (S < B)
-{
-    cout <<"Answer: "<< S;
-}
-else
-{
-while ((v / B) != 1)
-{
-    int L = S%B;
-    v = S;
-    S = S/B;
-    kiskis += std::to_string(L);
-}
-}
-kiskis += std::to_string(1);
-std::reverse(kiskis.begin(), kiskis.end());
-cout << "Answer: " << kiskis;
-return 0;
+        if (S < B)
+        {
+            cout << "Answer: " << S;
+        }
+        else
+        {
+            while (last > B)
+            {
+                if (S > B) {
+                    j = S % B;
+                    char L = chislo(j);
+                    cout << L << " " << j << endl;
+                    v = S;
+                    S = S / B;
+                    last = S;
+                    kiskis += char(L);
+                }
+            }
+        }
+        kiskis += std::to_string(last);
+        std::reverse(kiskis.begin(), kiskis.end());
+        cout << "Answer: " << kiskis;
+    }
+    return 0;
 }
 
 
