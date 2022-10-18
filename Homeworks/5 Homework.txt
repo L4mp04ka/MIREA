@@ -1,0 +1,26 @@
+0000000000000000000000000000000000000(13)
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main(){
+    int m, summ, count = 0;
+    cout << "Enter m < 27" << endl;
+    cin >> m;
+    if (m <27){
+        for (int k = 100; k < 1000; k++){
+            summ = (k%10) + ((k%100)/10) + (k/100);
+            if (summ == m){
+                count += 1;
+                cout << k << endl;
+            }
+        }
+        cout << "Count of digits: " << count << endl;
+    }
+    else{
+        cout << "Ne to" << endl;
+    }
+    return 0;
+}
+0000000000000000000000000000000000000(14)
