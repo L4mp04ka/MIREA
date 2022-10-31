@@ -1,4 +1,127 @@
-0000000000000000000000000000000000000(13)
+0000000000000000000000000000000000000(1)
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int a,b,i;
+    cout << "Введите 1 число" << endl;
+    cin >> a;
+    cout << "Введите 2 число" << endl;
+    cin >> b;
+    cout << "1-division, 2-subtraction" << endl;
+    cin >> i;
+    if (i==1){
+    if (a==0 or b == 0){
+        cout << "No answer";
+        return 0;
+    }
+    else{
+    a = abs(a);
+    b = abs(b);
+    while (a != 0 and b != 0){
+        if (a > b) {
+                a = a % b;
+            }
+        else {
+                b = b % a;
+            }
+    }
+        cout << (a+b);
+    }
+    }
+    else{
+        if (a==0 or b == 0){
+        cout << "No answer";
+        return 0;
+    }
+        a = abs(a);
+        b = abs(b);
+        while (a != b){
+            if (a > b){
+                a = a - b;
+            }
+            else{
+                b = b - a;
+            }
+        }
+        cout << a << endl;
+    }
+        return 0;
+}
+0000000000000000000000000000000000000(2)
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int a, b = 0;
+    cout << "Введите число" << endl;
+    cin >> a;
+    if (a < 2){
+        cout << "No answer";
+    }
+    else{
+    for (int i = 2; i < a + 1; i++){
+        b = 0;
+        for (int k = 1; k < i;k++){
+            if (i % k==0){
+                b += 1;
+            }
+            else{
+                b = b;
+            }
+            if (b == 1 and k == i - 1){
+                cout << i << endl;
+            }
+            }
+        }
+    }
+    return 0;
+}
+0000000000000000000000000000000000000(3.13)
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+int main() {
+	string T, a;
+	ofstream file("text.txt");
+	if (file.is_open()) {
+		cout << "Input text" << endl;
+		getline(cin, T);
+		file << T;
+		file.close();
+	}
+	return 0;
+}
+0000000000000000000000000000000000000(3.12)
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    string a;
+	ifstream filesec("text.txt");
+	    if (filesec.is_open()){
+			while (!filesec.eof()) {
+				filesec >> a ;
+				cout << a << " " ;
+			}
+			filesec.close();
+		}
+		else {
+			cout << "File no open" << endl;
+		}
+	return 0;
+}
+0000000000000000000000000000000000000(4.13)
 #include <iostream>
 #include <string>
 
@@ -23,4 +146,26 @@ int main(){
     }
     return 0;
 }
-0000000000000000000000000000000000000(14)
+0000000000000000000000000000000000000(4.1)
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+    double n, perem, b;
+    cout << "Enter n" << endl;
+    cin >> n;
+    if (n > 0){
+    for (int i = 0; i < n + 1; i++){
+        perem += sin(i);
+        b += i/perem;
+    }
+    cout << b << endl;
+    }
+    else {
+        cout << "No answer" << endl;
+        return 0;
+    }
+	return 0;
+}
