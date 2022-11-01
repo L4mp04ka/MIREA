@@ -5,51 +5,41 @@ using namespace std;
 
 int main()
 {
-    int a,b,i;
-    cout << "Введите 1 число" << endl;
+    int a, b, k, x;
+    cout << "Enter first number" << endl;
     cin >> a;
-    cout << "Введите 2 число" << endl;
+    cout << "Enter second number" << endl;
     cin >> b;
-    cout << "1-division, 2-subtraction" << endl;
-    cin >> i;
-    if (i==1){
-    if (a==0 or b == 0){
-        cout << "No answer";
-        return 0;
+    if (a == 0 or b == 0) {
+    cout << "No answer";
+    return 0;
     }
-    else{
-    a = abs(a);
-    b = abs(b);
-    while (a != 0 and b != 0){
-        if (a > b) {
-                a = a % b;
-            }
-        else {
-                b = b % a;
-            }
-    }
-        cout << (a+b);
-    }
-    }
-    else{
-        if (a==0 or b == 0){
-        cout << "No answer";
-        return 0;
-    }
+    else {
         a = abs(a);
         b = abs(b);
-        while (a != b){
-            if (a > b){
-                a = a - b;
+        k = abs(a);
+        x = abs(b);
+        while (a != 0 and b != 0) {
+            if (a > b) {
+                a = a % b;
             }
-            else{
-                b = b - a;
+            else {
+                b = b % a;
             }
         }
-        cout << a << endl;
-    }
+        cout << (a + b) << endl;
+        }
+        while (k != x) {
+            if (k > x) {
+                k = k - x;
+            }
+            else {
+                x = x - k;
+            }
+        }
+        cout << k << endl;
         return 0;
-}
+        }
 0000000000000000000000000000000000000(2)
 #include <iostream>
 
@@ -81,7 +71,7 @@ int main()
     }
     return 0;
 }
-0000000000000000000000000000000000000(3.13)
+0000000000000000000000000000000000000(3.14)
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -90,11 +80,21 @@ using namespace std;
 
 int main() {
 	string T, a;
-	ofstream file("text.txt");
+	ofstream file("text.txt", ios::app);
 	if (file.is_open()) {
 		cout << "Input text" << endl;
-		getline(cin, T);
-		file << T;
+		while (T != "/") {
+			getline(cin, T);
+			if (T == "/") {
+				T = "";
+				file.close();
+				return 0;
+			}
+			else {
+				file << T;
+				file << endl;
+			}
+		}
 		file.close();
 	}
 	return 0;
@@ -168,4 +168,154 @@ int main() {
         return 0;
     }
 	return 0;
+}
+0000000000000000000000000000000000000(5)
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <algorithm>
+#include <fstream>
+
+using namespace std;
+int chisla(char x) {
+    switch (x) {
+    case '0':
+        return 0;
+    case '1':
+        return 1;
+    case '2':
+        return 2;
+    case '3':
+        return 3;
+    case '4':
+        return 4;
+    case '5':
+        return 5;
+    case '6':
+        return 6;
+    case '7':
+        return 7;
+    case '8':
+        return 8;
+    case '9':
+        return 9;
+    case 'A':
+        return 10;
+    case 'B':
+        return 11;
+    case 'C':
+        return 12;
+    case 'D':
+        return 13;
+    case 'E':
+        return 14;
+    case 'F':
+        return 15;
+    }
+    return 0;
+}
+string chislo(int r) {
+    switch (r) {
+    case 0:
+        return "0";
+    case 1:
+        return "1";
+    case 2:
+        return "2";
+    case 3:
+        return "3";
+    case 4:
+        return "4";
+    case 5:
+        return "5";
+    case 6:
+        return "6";
+    case 7:
+        return "7";
+    case 8:
+        return "8";
+    case 9:
+        return "9";
+    case 10:
+        return "A";
+    case 11:
+        return "B";
+    case 12:
+        return "C";
+    case 13:
+        return "D";
+    case 14:
+        return "E";
+    case 15:
+        return "F";
+    }
+    return "";
+}
+int main() {
+    string a;
+    string y;
+    ifstream filesec("text.txt");
+    if (filesec.is_open()) {
+        while (!filesec.eof()) {
+            filesec >> y;
+            cout << a << " ";
+            int A = 16, B, C, S = 0, k = 0, f = 0, v = 0, j = 0, G = 0, last = 30;
+            string vk;
+            string kiskis;
+            string m;
+
+            cout << "new base" << endl;
+
+            cin >> B;
+            G = 0;
+
+            if (A == 0 || B == 0) {
+                cout << "Noooo Answer, You Bad" << endl;
+            }
+            else {
+                for (int i = 0; i < y.length(); i++) {
+                    int z = chisla(y[i]);
+                    f = f + 1;
+                    k = (z)*pow(A, y.length() - f);
+                    S = S + k;
+                    if (z >= A) {
+                        cout << "Noooo, Number > old base" << endl;
+                        return(0);
+                    }
+                }
+
+                if (S <= B)
+                {
+                    cout << "Answer: " << S;
+                    kiskis = S;
+                }
+                else
+                {
+                    while (last > B)
+                    {
+                        if (S > B) {
+                            j = S % B;
+                            cout << j << endl;
+                            string L = chislo(j);
+                            v = S;
+                            S = S / B;
+                            last = S;
+                            vk = chislo(last);
+                            kiskis += L;
+                        }
+                    }
+                }
+                kiskis += vk;
+                std::reverse(kiskis.begin(), kiskis.end());
+                cout << "Answer: " << kiskis << endl;
+                ofstream file("texts.txt", ios::app);
+                if (file.is_open()) {
+                    file << kiskis;
+                    file << endl;
+                    cout << "Zapicb..." << endl;
+                }
+            }
+        }
+    }
+    return 0;
 }
